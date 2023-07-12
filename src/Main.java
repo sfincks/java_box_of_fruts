@@ -48,7 +48,7 @@ public class Main {
     // FIXME: 06.07.2023 Добавить нужный дженерик.
     static class Box<T extends Fruit> {
 
-        private List<T> box = new ArrayList<>();
+        public List<T> box = new ArrayList<>();
         void add(T fruit){
             box.add(fruit);
         }
@@ -61,8 +61,10 @@ public class Main {
             return boxWeight;
         }
         // FIXME: 06.07.2023 Реализовать методы согласно заданию.
-        public <T extends Fruit> void moveTo (Box<? super T> fruts){
-            fruts.addAll(box);
+        public void moveTo (Box<? super T> fruts){
+            for (T item:box) {
+                fruts.add(item);
+            }
             box.clear();
         }
     }
